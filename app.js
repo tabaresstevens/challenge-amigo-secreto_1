@@ -46,7 +46,14 @@ function sortearAmigo() {
 
     const itemResultado = document.createElement("li");
     itemResultado.textContent = `🎉 El amigo secreto es: ${nombreSorteado}`;
+    itemResultado.className = "resultado-estilizado";
     resultado.appendChild(itemResultado);
+
+
+    // 🔒 Deshabilita el botón después del sorteo
+    document.getElementById("botonSortear").disabled = true;
+    document.getElementById("botonSortear").style.opacity = "0.5"; // opcional: efecto visual
+    document.getElementById("botonSortear").style.cursor = "not-allowed";
 }
 
 // Función para borrar lista
@@ -54,6 +61,12 @@ function borrarLista() {
     amigos = []; // vacía el array
     document.getElementById("listaAmigos").innerHTML = ""; // borra la lista visual
     document.getElementById("resultado").innerHTML = ""; // borra el resultado del sorteo
+
+    // ✅ Habilita nuevamente el botón de sorteo
+    const botonSortear = document.getElementById("botonSortear");
+    botonSortear.disabled = false;
+    botonSortear.style.opacity = "1";
+    botonSortear.style.cursor = "pointer";
 }
 
 
@@ -84,3 +97,12 @@ function corregirNombre(index) {
     amigos.splice(index, 1); // elimina ese nombre del array
     actualizarLista(); // actualiza la lista sin el nombre seleccionado
 }
+
+
+// Permitir que Enter también agregue el nombre
+document.getElementById("amigo").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault(); // evita que recargue la página
+        agregarAmigo();
+    }
+});

@@ -90,6 +90,9 @@ body {
 .button-container {
     width: 300px;
     justify-content: center;
+    display: flex;
+    flex-direction: column; /* mantiene los botones uno debajo del otro */
+    gap: 20px; /* añade 20px de espacio vertical entre ellos */ 
 }
 
 /* Estilos de entrada de texto */
@@ -176,4 +179,65 @@ ul {
 
 .boton-corregir:hover {
     background-color: #008ec0;
+}
+
+
+.espacio-boton {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+.name-list li {
+    display: flex;
+    justify-content: space-between; /* separa el texto del botón */
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    background-color: #f0f0f0;
+    border-radius: 6px;
+    list-style-type: none;
+}
+
+
+
+
+.resultado-estilizado {
+    background: linear-gradient(135deg, #00AFEF, #00c9a7, #fbc531, #f0932b, #e84118);
+    color: white;
+    padding: 25px 30px;
+    border-radius: 12px;
+    font-size: 32px;
+    font-weight: 900;
+    text-align: center;
+    margin-top: 30px;
+    list-style: none;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    animation: popIn 0.6s ease-in-out;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Animación para hacer que aparezca con suavidad */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.6);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
